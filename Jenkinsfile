@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -21,9 +22,6 @@ pipeline {
         }
 
         stage('Deploy') {
-            when {
-                branch 'main'
-            }
             steps {
                 bat 'call deploy.bat'
             }
@@ -33,11 +31,10 @@ pipeline {
     post {
         success {
             echo 'CI/CD pipeline completed successfully.'
-            echo 'Application deployed at http://localhost:8081'
         }
 
         failure {
-            echo 'Pipeline failed. Check the console output for details.'
+            echo 'CI/CD pipeline failed. Check the console output.'
         }
     }
 }
