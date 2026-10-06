@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="calculator">
+        <h1>CI/CD Calculator</h1>
+
+        <input type="number" id="num1" placeholder="Enter first number">
+        <input type="number" id="num2" placeholder="Enter second number">
+
+        <div class="buttons">
+            <button onclick="calculate('add')">Add</button>
+            <button onclick="calculate('subtract')">Subtract</button>
+            <button onclick="calculate('multiply')">Multiply</button>
+            <button onclick="calculate('divide')">Divide</button>
+        </div>
+
+        <h2 id="result">Result: </h2>
+    </div>
+
+    <script>
+        function calculate(operation) {
+            const a = Number(document.getElementById("num1").value);
+            const b = Number(document.getElementById("num2").value);
+            let result;
+
+            if (operation === "add") {
+                result = a + b;
+            } else if (operation === "subtract") {
+                result = a - b;
+            } else if (operation === "multiply") {
+                result = a * b;
+            } else if (operation === "divide") {
+                if (b === 0) {
+                    result = "Cannot divide by zero";
+                } else {
+                    result = a / b;
+                }
+            }
+
+            document.getElementById("result").textContent = "Result: " + result;
+        }
+    </script>
+
+</body>
+</html>
